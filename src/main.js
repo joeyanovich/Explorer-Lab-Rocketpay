@@ -8,6 +8,10 @@ function setCardType(type) {
   const colors = {
     visa: ["#2D57F2", "#F3E989"],
     mastercard: ["#A5914B", "#D4424B"],
+    dinersclub: ["#436D99", "#2D57F2"],
+    hipercard: ["#816871", "#8E1C1B"],
+    elo: ["#596294", "#DFA026"],
+    americanexpress: ["#436D99", "#2D57F2"],
     default: ["black", "gray"],
   }
 
