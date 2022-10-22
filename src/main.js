@@ -46,3 +46,55 @@ const expirationDatePattern = {
   },
 }
 const expirationDateMasked = IMask(expirationDate, expirationDatePattern)
+
+const cardNumber = document.querySelector("#card-number")
+const cardNumberPattern = {
+  mask: [
+    {
+      mask: "0000 0000 0000 0000",
+      cardtype: "visa",
+      regex: /^4\d{0,15}/,
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardtype: "mastercard",
+      regex: /(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardype: "elo",
+      regex:
+        /(^636368|^438935|^504175|^509048|^509067|^509049|^509069|^509050|^509074|^509068|^509040|^509045|^509051|^509046|^509066|^509047|^509042|^509052|^509043|^509064|^509040|^36297|^5067|^4576|^4011)\d{0,12}/,
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardtype: "americanexpress",
+      regex: /^3[47]\d{0,13}/,
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardype: "dinersclub",
+      regex: /^3(?:0([0-5]|9)|[689]\d?)\d{0,11}/,
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardtype: "hipercard",
+      regex: /(^38|^60)\d{0,14}/,
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardtype: "default",
+    },
+  ],
+  dispatch: function (appended, dynamicMasked) {
+    const number = (dynamicMasked.value + appended).replace(/\D/g, "")
+    const foundMask = dynamicMasked.compiledMasks.find(function (item) {
+      return number.match(item.regex)
+    })
+
+    console.log(foundMask)
+    return foundMask
+  },
+}
+
+const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
