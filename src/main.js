@@ -124,3 +124,12 @@ function updateSecurityCode(code) {
 
   ccSecurity.innerText = code.length === 0 ? "123" : code
 }
+
+cardNumberMasked.on("accept", () => {
+  updateCardNumber(cardNumberMasked.value)
+})
+
+function updateCardNumber(number) {
+  const ccNumber = document.querySelector(".cc-number")
+  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number
+}
