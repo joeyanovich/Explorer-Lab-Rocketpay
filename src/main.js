@@ -114,3 +114,13 @@ cardHolder.addEventListener("input", () => {
   ccHolder.innerText =
     cardHolder.value.length === 0 ? "NOME TITULAR DO CARTÃO" : cardHolder.value
 })
+
+securityCodeMasked.on("accept", () => {
+  updateSecurityCode(securityCodeMasked.value)
+})
+
+function updateSecurityCode(code) {
+  const ccSecurity = document.querySelector(".cc-security .value")
+
+  ccSecurity.innerText = code.length === 0 ? "123" : code
+}
